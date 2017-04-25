@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 
 import styled from 'styled-components';
+import media from './media';
 
 import calendar from './calendar.svg';
 import './App.css';
+
 
 const Widget = styled.div`
     padding: 0 20px 20px;
@@ -19,6 +21,10 @@ const Widget = styled.div`
 const Header = styled.div`
     display: flex;
     flex-direction: row;
+    ${media.w440`
+        display: flex;
+        flex-direction: column;
+    `}
 `;
 
 const HeaderMessage = styled.div`
@@ -26,6 +32,20 @@ const HeaderMessage = styled.div`
     line-height: 2.2rem;
     letter-spacing: 0.02rem;
     padding-left: ${props => props.last ? '7px' : '0'};
+    ${media.w570`
+        font-size: 1.11rem;
+        line-height: 2.8rem;
+    `}
+    ${media.w440`
+        ${props => {
+            if (props.last) {
+                return `
+                    padding: 0;
+                    margin-top: -20px;
+                `;
+            }
+        }};
+    `}
 `;
 
 const Content = styled.div`
@@ -33,6 +53,9 @@ const Content = styled.div`
     flex-direction: row;
     flex-wrap: nowrap;
     padding-top: 10px;
+    ${media.w768`flex-wrap: wrap;`}
+    ${media.w768`padding: 0;`}
+    ${media.w370`margin-top: 5px;`}
 `;
 
 const LongMessage = styled.div`
@@ -51,6 +74,22 @@ const LongMessage = styled.div`
     div {
       max-width: 100%;
     };
+    ${media.w970`
+        flex-basis: 240px;
+        flex-shrink: 0;
+        flex-grow: 0;
+    `}
+    ${media.w768`
+        display: inline-flex;
+        height: auto;
+        flex-basis: 100%;
+        padding: 0 0 16px;
+    `}
+    ${media.w570`padding: 0 0 15px;`}
+    ${media.w370`
+        padding: 15px 0 0;
+        order: 3;
+    `}
 `;
 
 const ButtonSearch = styled.button`
@@ -69,6 +108,24 @@ const ButtonSearch = styled.button`
     font-size: 1.2rem;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
+    ${media.w970`flex-shrink: 1;`}
+    ${media.w768`
+        max-width: 240px;
+        min-width: 100px;
+        margin-left: 8px;
+        flex-shrink: 1;
+        flex-grow: 1;
+        flex-basis: 100px;
+    `}
+    ${media.w500`
+        max-width: 100%;
+        flex-basis: 100%;
+        margin: 20px 0 0;
+    `}
+    ${media.w370`
+        margin-top: 15px;
+        order: 2;
+    `}
 `;
 
 const DatePicker = styled.div`
@@ -81,6 +138,25 @@ const DatePicker = styled.div`
     background-color: #fff;
     border-radius: 2px;
     position: relative;
+    ${media.w970`flex-shrink: 1;`}
+    ${media.w768`
+        min-width: 100px;
+        flex-basis: 100px;
+        max-width: 220px;
+        flex-shrink: 1;
+        flex-grow: 1;
+    `}
+    ${media.w500`
+        margin: 0;
+        margin-right: ${props => props.departure ? '20px' : '0'};
+    `}
+    ${media.w370`
+        flex-basis: 100%;
+        max-width: 100%;
+        order: 1;
+        margin: 0;
+        margin-top: ${props => props.departure ? '0' : '15px'};
+    `}
 `;
 
 const DateInput = styled.input`
@@ -141,12 +217,12 @@ class App extends Component {
         <Content>
             <LongMessage><div>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</div></LongMessage>
 
-            <DatePicker>
+            <DatePicker departure>
                 <DateInput size="1" type="text" placeholder="Depart date" />
                 <IconWrapper><img src={calendar} alt="" /></IconWrapper>
             </DatePicker>
 
-            <DatePicker>
+            <DatePicker arrival>
                 <DateInput size="1" type="text" placeholder="Return date" />
                 <IconWrapper><img src={calendar} alt="" /></IconWrapper>
             </DatePicker>
