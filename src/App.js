@@ -6,9 +6,12 @@ import mainCss from './css/widget_main.txt';
 import mediaCss from './css/widget_media.txt';
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
-            <div className="widget">
+            <div className="widget" style={{backgroundColor: this.props.backColor, textColor: this.props.textColor}}>
                 <style>
                     {mainCss}
                 </style>
@@ -42,7 +45,7 @@ class App extends Component {
                         </div>
                     </div>
 
-                    <button className="button_search">search</button>
+                    <button className="button_search" style={{backgroundColor:this.props.buttonColor}}>search</button>
                 </div>
             </div>
         );
