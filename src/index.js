@@ -36,10 +36,3 @@ window.travelPayoutsWidgetInit = (props) => {
 
     document.registerElement('x-travelpayoutswidget', {prototype: proto});
 })()
-
-window.travelPayoutsWidgetInit({
-    id: 'root',
-    backColor: '#ff00ff',
-    textColor: '#00ff00',
-    buttonColor: '#ff0000'
-});
