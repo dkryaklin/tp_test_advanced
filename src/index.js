@@ -3,13 +3,11 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 window.travelPayoutsWidgetInit = (props) => {
-    // document.querySelector('#elem').createShadowRoot();
+    document.querySelector('body').append(document.createElement('x-widget'));
+};
 
-    // ReactDOM.render(
-    //     <App {...props} />,
-    //     document.getElementById('elem')
-    // );
 
+(() => {
     const proto = Object.create(HTMLElement.prototype, {
         attachedCallback: {
             value: function() {
@@ -22,7 +20,4 @@ window.travelPayoutsWidgetInit = (props) => {
     });
 
     document.registerElement('x-widget', {prototype: proto});
-    document.querySelector('body').append(document.createElement('x-widget'));
-};
-
-
+})()

@@ -1,49 +1,50 @@
-import React, { Component } from 'react';
-
-import { Widget, Header, Content } from './styled_components/common';
-import { DatePicker, DateInput, IconWrapper } from './styled_components/picker';
-import { HeaderMessage, LongMessage } from './styled_components/message';
-import { ButtonSearch } from './styled_components/search';        
+import React, { Component } from 'react';  
 
 import calendar from './calendar.svg';
+
+import mainCss from './css/widget_main.txt';
+import mediaCss from './css/widget_media.txt';
 
 class App extends Component {
     render() {
         return (
-            <Widget>
+            <div className="widget">
                 <style>
-                    {`div {background-color: #000}`}
+                    {mainCss}
                 </style>
-                <Header>
-                        <HeaderMessage>Where does it come from?</HeaderMessage>
-                        <HeaderMessage last>Why do we use it?</HeaderMessage>
-                </Header>
+                <style>
+                    {mediaCss}
+                </style>
+                <div className="header">
+                        <div className="header_message">Where does it come from?</div>
+                        <div className="header_message">Why do we use it?</div>
+                </div>
 
-                <Content>
-                    <LongMessage>
+                <div className="content">
+                    <div className="long_message">
                         <div>
                             It is a long established fact that a reader will be distracted by 
                             the readable content of a page when looking at its layout.
                         </div>
-                    </LongMessage>
+                    </div>
 
-                    <DatePicker departure>
-                        <DateInput size="1" type="text" placeholder="Depart date" />
-                        <IconWrapper>
+                    <div className="date_picker">
+                        <input className="date_input" size="1" type="text" placeholder="Depart date" />
+                        <div className="icon_wrapper">
                             <img src={calendar} alt="" />
-                        </IconWrapper>
-                    </DatePicker>
+                        </div>
+                    </div>
 
-                    <DatePicker arrival>
-                        <DateInput size="1" type="text" placeholder="Return date" />
-                        <IconWrapper>
+                    <div className="date_picker">
+                        <input className="date_input" size="1" type="text" placeholder="Return date" />
+                        <div className="icon_wrapper">
                             <img src={calendar} alt="" />
-                        </IconWrapper>
-                    </DatePicker>
+                        </div>
+                    </div>
 
-                    <ButtonSearch>search</ButtonSearch>
-                </Content>
-            </Widget>
+                    <button className="button_search">search</button>
+                </div>
+            </div>
         );
     }
 }

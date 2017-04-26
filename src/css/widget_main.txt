@@ -1,10 +1,4 @@
-body, html {
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    display: none;
+.widget {
     padding: 0 20px 20px;
     color: #fff;
     background-color: #4A90E2;
@@ -15,7 +9,7 @@ body {
     box-sizing: border-box;
 }
 
-header {
+.header {
     display: flex;
     flex-direction: row;
 }
@@ -121,8 +115,12 @@ header {
     flex-grow: 0;
     cursor: pointer;
     background-color: #fff;
-    background: svg-load('images/calendar.svg');
-    background-size: 15px 17px;
-    background-repeat: no-repeat;
-    background-position: center, center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon_wrapper > img {
+    width: 15px;
+    height: 17px;
 }
