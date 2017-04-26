@@ -114,7 +114,8 @@ module.exports = {
           /\.css$/,
           /\.json$/,
           /\.svg$/,
-          /\.txt$/,
+          /\._css$/,
+          /\._svg$/,
         ],
         loader: 'url',
         query: {
@@ -159,8 +160,12 @@ module.exports = {
         }
       },
       {
-        test: /\.txt$/,
+        test: /\._css$/,
         loader: 'raw'
+      },
+      {
+          test: /\._svg$/,
+          loader: 'svg-inline-loader'
       }
       // ** STOP ** Are you adding a new loader?
       // Remember to add the new extension(s) to the "url" loader exclusion list.
