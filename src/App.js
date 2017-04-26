@@ -11,6 +11,9 @@ class App extends Component {
     render() {
         return (
             <Widget>
+                <style>
+                    {`div {background-color: #000}`}
+                </style>
                 <Header>
                         <HeaderMessage>Where does it come from?</HeaderMessage>
                         <HeaderMessage last>Why do we use it?</HeaderMessage>
